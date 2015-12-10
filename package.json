@@ -1,0 +1,15 @@
+{
+  "name": "entrega",
+  "version": "0.1.0",
+  "description": "Plataforma de democracia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/mancvso/talleranalisis"
+  },
+  "author": "Alejandro Vidal",
+  "license": "Unlicense"
+}
