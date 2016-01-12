@@ -1,0 +1,124 @@
+  <div class="row clearfix holderjs" style="background-image: url('?holder.js/600x500?theme=sky'); background-size:cover;">
+    <div class="col-md-1 column">
+    </div>
+    <div class="col-md-7 column">
+      <div class="jumbotron">
+        <h1>
+          Tu decides
+        </h1>
+        <p>
+          Sé parte de las transformaciones y mejoras de tú país.
+        </p>
+        <p>
+          <a class="btn btn-primary btn-large" href="info.html">Más información »</a>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-1 column">
+    </div>
+    <div class="col-md-3 column">
+      <div class="panel-group" id="panel-659942">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-659942" href="#panel-element-978961">¿Cómo funciona la votación?</a>
+          </div>
+          <div id="panel-element-978961" class="panel-collapse collapse">
+            <div class="panel-body">
+              Texto explicando el proceso de votación, legitimidad y registros.
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+             <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-659942" href="#panel-element-717390">¿Quiénes pueden ser candidatos?</a>
+          </div>
+          <div id="panel-element-717390" class="panel-collapse collapse">
+            <div class="panel-body">
+              Texto explicativo detallando las responsabilidades de los candidatos e instrucciones para convertirse en uno.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <h2>
+        Infórmate
+      </h2>
+      <p>
+        Los Consejos de la Sociedad Civil son organismos ciudadanos destinados a promover la transparencia y participación de la ciudadanía en materia de política estatal.
+      </p>
+      <p>
+        <a class="btn" href="info.html">Más información »</a>
+      </p>
+    </div>
+  </div>
+  <div class="row clearfix hidden-xs">
+    <div class="col-md-4 col-sm-4 column text-center">
+      <i class="glyphicon glyphicon-thumbs-up index-icon"></i>
+      <h2>
+        Simple
+      </h2>
+      <p>
+        Conoce, vota y mantente informado.<br />Elige a los candidatos más aptos para participar en los consejos
+      </p>
+      <p>
+        <a class="btn" href="info.html">Más información »</a>
+      </p>
+    </div>
+    <div class="col-md-4 col-sm-4 column text-center">
+      <i class="glyphicon glyphicon-bullhorn index-icon"></i>
+      <h2>
+        Democrático
+      </h2>
+      <p>
+        Vota en las elecciones que se llevan a cabo en tú ciudad, vigila y reporta los errores a la información y candidatos deshonestos.
+      </p>
+      <p>
+        <a class="btn" href="info.html">Más información »</a>
+      </p>
+    </div>
+    <div class="col-md-4 col-sm-4 column text-center">
+      <i class="glyphicon glyphicon-eye-open index-icon"></i>
+      <h2>
+        Transparente
+      </h2>
+      <p>
+        Revisa detalle a detalle el proceso electivo y consulta irregularidades con la comunidad.
+      </p>
+      <p>
+        <a class="btn" href="info.html">Más información »</a>
+      </p>
+    </div>
+  </div>
+  <div class="row clearfix">
+    <div class="col-md-12 column">
+      <h3>
+        Últimos Llamados
+      </h3>
+      <div class="row">
+      {% for llamado in llamados %}
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="thumbnail">
+            <img alt="300x200" src="holder.js/300x200?theme=vine" />
+            <div class="caption">
+              <h3>
+                {{ llamado.nombre }}
+              </h3>
+              <p>
+                {{ llamado.descripcion }}
+              </p>
+              <p>
+                <a class="btn btn-primary" href="#" onclick="llamados('{{llamado._id}}')">Ver</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      </div>
+      <h3 class="text-center text-muted">
+        No hay más campañas para mostrar
+      </h3>
+    </div>
+  </div>

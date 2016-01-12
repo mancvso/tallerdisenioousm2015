@@ -1,0 +1,41 @@
+<div class="row clearfix">
+    <div class="col-md-12">
+      <h2>
+        {{ llamado.nombre }}
+      </h2>
+    </div>
+    <div class="col-md-12 column">
+      <ul class="breadcrumb">
+        <li>
+          <a href="index.html">Inicio</a> <span class="divider"></span>
+        </li>
+        <li>
+          <a href="index.html">Llamados</a> <span class="divider"></span>
+        </li>
+        <li class="active">
+          <a onclick="llamados('{{llamado._id}}')">{{ llamado.nombre }}</a> <span class="divider"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    <ul class="media-list">
+    {% for candidato in ciudadanos %}
+      <li class="media">
+      <div class="media-left">
+        <a href="#">
+          <img class="media-object" src="holder.js/120x120&text=Candidato" alt="" />
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{ candidato.nombre }} {{candidato.apellido }}</h4>
+        {{ candidato.rut }}
+        <br>
+        <!-- llamado_id, candidato_id, argumento, nombre -->
+        <a href="#" onclick="nominar('{{llamado._id}}', '{{ candidato._id }}', '{{ candidato.nombre}} {{ candidato.apellido}}' )" class="btn btn-success">Nominar</a>
+      </div>
+    </li>
+    {% endfor %}
+    </ul>
+  </div>

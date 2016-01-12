@@ -11,5 +11,10 @@
     "url": "github.com/mancvso/talleranalisis"
   },
   "author": "Alejandro Vidal",
-  "license": "Unlicense"
+  "license": "Unlicense",
+  "dependencies": {
+    "moment": "^2.10.6",
+    "mongoose": "^4.3.4",
+    "restify-logger": "^2.0.1"
+  }
 }

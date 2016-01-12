@@ -1,0 +1,74 @@
+<div class="row clearfix">
+  <div class="col-md-12">
+    <h2>
+      {{ ciudadano.nombre }} {{ ciudadano.apellido }}
+    </h2>
+  </div>
+  <div class="col-md-12 column">
+    <ul class="breadcrumb">
+      <li>
+        <a href="/">Inicio</a> <span class="divider"></span>
+      </li>
+      <li class="active">
+        <a href="#/ciudadano/{{ciudadano._id}}" onclick="ciudadanos('{{ciudadano._id}}')">{{ ciudadano.nombre }} {{ ciudadano.apellido }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 20px; margin-bottom: 20px;">
+  <div class="row panel">
+    <div class="col-md-4 bg_blur ">
+          
+    </div>
+        <div class="col-md-8  col-xs-12">
+           <img src="http://lorempixel.com/200/200/people" class="img-thumbnail picture hidden-xs" />
+           <img src="http://lorempixel.com/200/200/people" class="img-thumbnail visible-xs picture_mob" />
+           <div class="header">
+                <h1>{{ ciudadano.nombre }} {{ ciudadano.apellido }}</h1>
+                <h4>{{ ciudadano.rut }}</h4>
+                <span>{{ ciudadano.bio }}</span>
+           </div>
+        </div>
+    </div>   
+    
+  <!-- <div class="row nav">    
+        <div class="col-md-4"></div>
+        <div class="col-md-8 col-xs-12" style="margin: 0px;padding: 0px;">
+            <a href="#reseñas"><div class="col-md-4 col-xs-4 well text-info">Reseñas <br><i class="fa fa-weixin fa-lg"></i> {{ ciudadano.comentarios.length }}</div></a>
+            <a href="#paticipaciones"><div class="col-md-4 col-xs-4 well text-info">Participaciones <br><i class="fa fa-weixin fa-lg"></i> {{ ciudadano.participaciones.length }}</div></a>
+            <a href="nominaciones.html"><div class="col-md-4 col-xs-4 well text-info">Nominaciones<br><i class="fa fa-thumbs-o-up fa-lg"></i> {{ ciudadano.nominaciones.length }}</div></a>
+        </div>
+    </div>
+</div> -->
+
+<div class="container" id="particiones">
+    <div class="page-header text-center">
+        <h1 id="timeline">Nominaciones</h1>
+    </div>
+    {% set cls = cycler("", "timeline-inverted") %}
+    {% for llamado in nominaciones %}
+    <ul class="timeline">
+        <li class="{{ cls.next() }}">
+          <div class="timeline-badge primary"><a><i class="glyphicon glyphicon-record" rel="tooltip" title="{{ llamado.date }}" id=""></i></a></div>
+          <div class="timeline-panel">
+            <div class="timeline-heading">
+              <img class="img-responsive" src="http://lorempixel.com/800/500/sports/1" />
+            </div>
+            <div class="timeline-body">
+              <p>{{ llamado.descripcion }}</p>
+            </div>
+            
+            <div class="timeline-footer">
+                <a href="#" onclick="llamados('{{ llamado._id  }}')" class="pull-right">Ver Llamado</a>
+            </div>
+          </div>
+        </li>
+        <li class="clearfix" style="float: none;"></li>
+      {% else %}
+      <li>A´un no has sido nominado</li>
+
+      {% endfor %}
+        
+    </ul>
+</div>

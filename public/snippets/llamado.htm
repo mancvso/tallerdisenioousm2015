@@ -1,0 +1,163 @@
+<div class="row clearfix">
+    <div class="col-md-12">
+      <h2>
+        {{ llamado.nombre }}
+      </h2>
+    </div>
+    <div class="col-md-12 column">
+      <ul class="breadcrumb">
+        <li>
+          <a href="index.html">Inicio</a> <span class="divider"></span>
+        </li>
+        <li>
+          <a href="index.html">Llamados</a> <span class="divider"></span>
+        </li>
+        <li class="active">
+          <a onclick="llamados('{{llamado._id}}')">{{ llamado.nombre }}</a> <span class="divider"></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row clearfix">
+    
+    <div class="col-md-8 column">
+      <img class="img-thumbnail" alt="600x200" src="holder.js/600x200?theme=sky&text=Encabezado" />
+      <h3>
+        Descripción del llamado
+      </h3>
+      <p>
+        {{ llamado.descripcion }}
+      </p>
+    </div>
+    <div class="col-md-4 column">
+      <h3>
+        Objetivos Concretos
+      </h3>
+      <ul>
+        {% for objetivo in llamado.objetivos %}
+        <li>
+          ({{ objetivo.prioridad }}) <strong>{{ objetivo.descripcion }}</strong>
+        </li>
+        {% else %}
+        <li>
+          (Sin objetivos definidos)
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" style="width: {{ llamado.apoyo.length | percentage(llamado.rechazo.length) }}">
+        </div>
+        <div class="progress-bar progress-bar-danger" style="width: {{ llamado.rechazo.length | percentage(llamado.apoyo.length) }}">
+        </div>
+
+      </div>
+      <div class="btn-group">
+         <button class="btn btn-primary" type="button" onclick="apoyar('{{llamado._id}}')"><em class="glyphicon glyphicon-align-left"></em> Apoyar</button> <button class="btn btn-warning" type="button" onclick="rechazar('{{llamado._id}}')"><em class="glyphicon glyphicon-align-center"></em> Rechazar</button> <!-- <button class="btn btn-info" type="button"><em class="glyphicon glyphicon-align-right"></em> Corregir</button>-->
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+<h2>Agenda</h2>
+    <p class="lead">
+        Fechas importantes para el llamado publicado
+    </p>
+
+    <div class="agenda">
+        <div class="table-responsive">
+            <table class="table table-condensed table-bordered">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Evento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Single event in a single day -->
+                    {% for evento in llamado.agenda %}
+                    <tr>
+                        <td class="agenda-date" class="active" rowspan="1">
+                            <div class="dayofmonth">{{ evento.fecha }}</div>
+                            <div class="dayofweek">Sábado</div>
+                            <div class="shortdate text-muted">Julio, 2015</div>
+                        </td>
+                        <td class="agenda-time">
+                            5:30 AM
+                        </td>
+                        <td class="agenda-events">
+                            <div class="agenda-event">
+                                <i class="glyphicon glyphicon-repeat text-muted" title="Repeating event"></i>
+                                {{ evento.detalle }}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    
+                    <!-- Multiple events in a single day (note the rowspan)
+                    <tr>
+                        <td class="agenda-date" class="active" rowspan="3">
+                            <div class="dayofmonth">24</div>
+                            <div class="dayofweek">Miércoles</div>
+                            <div class="shortdate text-muted">Agosto, 2015</div>
+                        </td>
+                        <td class="agenda-time">
+                            8:00 - 9:00 AM 
+                        </td>
+                        <td class="agenda-events">
+                            <div class="agenda-event">
+                                Ratificación
+                            </div>
+                        </td>
+                    </tr> -->
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+  <div class="row clearfix">
+    <h1>
+        Candidatos
+        </h1>
+  </div>
+    <div class="row">
+        {% for candidato in llamado.nominados %}
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="avatar">
+                    <a href="#" onclick="ciudadanos('{{ candidato.ciudadano }}')"><img src="holder.js/120x120&text=Candidato" alt="" /></a>
+                </div>
+                <div class="content">
+                    <p><a onclick="ciudadanos('{{candidato.ciudadano._id}}')" href="#/ciudadano/{{candidato.ciudadano._id}}">
+                    {{ candidato.ciudadano.nombre }} {{ candidato.ciudadano.apellido }}</a>
+                    <br>
+                    {{candidato.votos.length | default(0) }} voto(s)
+                    </p>
+                    <p><button type="button" class="btn btn-default" onclick="votar('{{llamado._id}}', '{{ candidato.ciudadano._id }}')">Votar</button></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+        
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="avatarx">
+                    <a href="#"><img src="holder.js/120x120?size=50&text=%2B" alt="" /></a>
+                </div>
+                <div class="content">
+                    <p>Nominar<br>
+                       Proponer nuevo candidato</p>
+                    <p><a href="#" onclick="candidatos('{{ llamado._id }}', '{{llamado.nombre }}')" class="btn btn-default">Nominar</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
